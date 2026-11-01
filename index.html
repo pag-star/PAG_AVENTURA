@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>PAG Aventura · Mai 2027</title>
-<meta property="og:title" content="PAG Aventura · Mai 2027">
+<title>PAG Aventura · 2027</title>
+<meta property="og:title" content="PAG Aventura · 2027">
 <meta property="og:description" content="11 amis. 3 jours. L'aventure commence ici.">
 <meta property="og:image" content="https://pag-star.github.io/PAG_AVENTURA/hero-mobile.jpg">
 <meta name="theme-color" content="#12304A">
@@ -64,6 +64,16 @@ input:focus,textarea:focus{outline:2px solid var(--teal);border-color:transparen
 .dock .back{width:56px;min-width:56px;padding:0;max-width:56px}
 .dock .next{max-width:300px}
 .err{color:var(--coral);font-size:13px;min-height:20px;margin-top:8px}
+.note{background:#fff;border:1px solid var(--sand);border-radius:16px;padding:14px 16px;font-size:14px}
+.note ul{margin:6px 0 0;padding-left:18px}.note li{margin:4px 0}
+.eur{position:relative}.eur span{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-weight:600;color:var(--muted)}
+.sim{margin-top:10px;display:grid;gap:8px}
+.sim div{display:flex;justify-content:space-between;align-items:baseline;background:var(--teal-pale);border-radius:12px;padding:10px 14px;font-size:13.5px}
+.sim div b{font:600 24px/1 "Cormorant Garamond",serif;color:var(--navy)}
+.step{position:relative;overflow:hidden}
+.deco{position:absolute;top:6px;right:-6px;width:118px;height:118px;opacity:.9;pointer-events:none}
+.step h2,.step .kicker{position:relative;max-width:calc(100% - 70px)}
+.waves{position:fixed;left:0;right:0;bottom:0;height:90px;z-index:0;pointer-events:none;opacity:.5}
 /* PASS */
 .pass{margin:8px 0 24px;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 18px 40px -18px rgba(18,48,74,.45)}
 .pass .ph{position:relative;height:150px;background:url(hero-mobile.jpg) 42% 30%/cover}
@@ -84,7 +94,7 @@ footer{text-align:center;font:300 10px Montserrat;letter-spacing:.3em;text-trans
 <picture><source media="(max-width:900px)" srcset="hero-mobile.jpg"><img src="hero.jpg" alt="Un groupe d'amis trinque au coucher du soleil sur un ponton, au bord d'une crique turquoise"></picture>
 <img class="logo" src="logo-white.png" alt="PAG Aventura">
 <div class="bottom">
-<div class="kicker">Édition privée · Mai 2027</div>
+<div class="kicker">Édition privée · 2027</div>
 <h1>L'aventure commence ici.</h1>
 <p>11 amis. 3 jours. Du soleil, la mer et des souvenirs inoubliables.</p>
 <button class="btn coral" id="start">Je rejoins l'aventure</button>
@@ -95,7 +105,7 @@ footer{text-align:center;font:300 10px Montserrat;letter-spacing:.3em;text-trans
 <div class="top"><img src="logo-transparent.png" alt=""><div class="bar"><i id="bar"></i></div><span class="count" id="count"></span></div>
 
 <section class="step" data-req="Nom">
-<div class="kicker">01 · Bienvenue à bord</div>
+<svg class="deco" viewBox="0 0 120 120"><circle cx="60" cy="52" r="22" fill="#E9C99A"/><g stroke="#E9C99A" stroke-width="4" stroke-linecap="round"><path d="M60 16v10M60 78v10M24 52h10M86 52h10M35 27l7 7M78 70l7 7M85 27l-7 7M42 70l-7 7"/></g><path d="M10 104q12-8 24 0t24 0 24 0 24 0" fill="none" stroke="#2F8E9C" stroke-width="4" stroke-linecap="round"/></svg><div class="kicker">01 · Bienvenue à bord</div>
 <h2>Une escapade imaginée pour nous.</h2>
 <p class="lead">À vous de choisir ce qui la rendra inoubliable. Trois minutes, pas plus.</p>
 <label class="q" for="nom">Ton prénom et ton nom</label>
@@ -109,13 +119,28 @@ footer{text-align:center;font:300 10px Montserrat;letter-spacing:.3em;text-trans
 </section>
 
 <section class="step" data-req="Dates">
-<div class="kicker">02 · Le moment</div>
+<svg class="deco" viewBox="0 0 120 120"><rect x="22" y="30" width="76" height="68" rx="10" fill="#fff" stroke="#2F8E9C" stroke-width="3"/><path d="M22 48h76" stroke="#2F8E9C" stroke-width="3"/><path d="M42 22v16M78 22v16" stroke="#12304A" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="74" r="12" fill="#E9C99A"/><path d="M50 88q10-6 20 0" stroke="#D97950" stroke-width="3" fill="none" stroke-linecap="round"/></svg><div class="kicker">02 · Le moment</div>
 <h2>Quand partons-nous ?</h2>
-<p class="lead">Deux week-ends prolongés en mai 2027. Coche tout ce qui te va.</p>
+<p class="lead">Coche tout ce qui te va. Plus on part tard, plus on a de temps pour mettre de côté.</p>
+<label class="q">Mai · week-ends prolongés <small>(6 mensualités)</small></label>
 <div class="cards one">
-<label><input type="checkbox" name="Dates" value="Ascension (jeu. 6 → dim. 9 mai)"><span><b>Ascension</b><em>Jeudi 6 → dimanche 9 mai</em></span></label>
-<label><input type="checkbox" name="Dates" value="Pentecôte (sam. 15 → lun. 17 mai)"><span><b>Pentecôte</b><em>Samedi 15 → lundi 17 mai</em></span></label>
-<label><input type="checkbox" name="Dates" value="Aucune des deux"><span>Aucune des deux ne me va</span></label>
+<label><input type="checkbox" name="Dates" value="Ascension (jeu. 6 → dim. 9 mai)" data-m="6" data-d="Mai 2027"><span><b>Ascension</b><em>Jeudi 6 → dimanche 9 mai</em></span></label>
+<label><input type="checkbox" name="Dates" value="Pentecôte (sam. 15 → lun. 17 mai)" data-m="6" data-d="Mai 2027"><span><b>Pentecôte</b><em>Samedi 15 → lundi 17 mai</em></span></label>
+</div>
+<label class="q">Septembre · vendredi → dimanche <small>(1 jour de congé · 10 mensualités)</small></label>
+<div class="cards">
+<label><input type="checkbox" name="Dates" value="Ven. 10 → dim. 12 sept." data-m="10" data-d="Sept. 2027"><span><b>10 → 12</b><em>septembre</em></span></label>
+<label><input type="checkbox" name="Dates" value="Ven. 17 → dim. 19 sept." data-m="10" data-d="Sept. 2027"><span><b>17 → 19</b><em>septembre</em></span></label>
+<label><input type="checkbox" name="Dates" value="Ven. 24 → dim. 26 sept." data-m="10" data-d="Sept. 2027"><span><b>24 → 26</b><em>septembre</em></span></label>
+</div>
+<label class="q">Octobre · vendredi → dimanche <small>(1 jour de congé · 11 mensualités)</small></label>
+<div class="cards">
+<label><input type="checkbox" name="Dates" value="Ven. 1er → dim. 3 oct." data-m="11" data-d="Oct. 2027"><span><b>1er → 3</b><em>octobre</em></span></label>
+<label><input type="checkbox" name="Dates" value="Ven. 8 → dim. 10 oct." data-m="11" data-d="Oct. 2027"><span><b>8 → 10</b><em>octobre</em></span></label>
+<label><input type="checkbox" name="Dates" value="Ven. 15 → dim. 17 oct." data-m="11" data-d="Oct. 2027"><span><b>15 → 17</b><em>octobre</em></span></label>
+</div>
+<div class="cards one" style="margin-top:10px">
+<label><input type="checkbox" name="Dates" value="Aucune de ces dates"><span>Aucune de ces dates ne me va</span></label>
 </div>
 <label class="q">Tu peux poser un jour de congé si besoin ?</label>
 <div class="cards">
@@ -126,7 +151,7 @@ footer{text-align:center;font:300 10px Montserrat;letter-spacing:.3em;text-trans
 </section>
 
 <section class="step" data-req="Ambiance">
-<div class="kicker">03 · Votre escapade idéale</div>
+<svg class="deco" viewBox="0 0 120 120"><path d="M64 112c-2-30 2-56 10-74" stroke="#12304A" stroke-width="6" fill="none" stroke-linecap="round"/><g fill="#2F8E9C"><path d="M74 38c-14-10-30-8-40 4 14-4 28-5 40-4z"/><path d="M74 38c12-12 28-12 38-2-14-2-26-1-38 2z"/><path d="M74 38c-4-14-14-22-26-22 10 6 18 13 26 22z"/><path d="M74 38c6-13 16-19 28-18-11 5-20 11-28 18z"/></g><circle cx="80" cy="44" r="4" fill="#D97950"/><circle cx="72" cy="46" r="4" fill="#D97950"/><path d="M8 112h104" stroke="#E9C99A" stroke-width="6" stroke-linecap="round"/></svg><div class="kicker">03 · Votre escapade idéale</div>
 <h2>Crique secrète, beach club ou aventure en mer ?</h2>
 <p class="lead">Dis-nous à quoi ressemblent tes trois jours rêvés.</p>
 <label class="q">Ton ambiance <small>(plusieurs choix possibles)</small></label>
@@ -151,7 +176,9 @@ footer{text-align:center;font:300 10px Montserrat;letter-spacing:.3em;text-trans
 <label><input type="checkbox" name="Activités" value="Spa / détente"><span>Spa, détente</span></label>
 <label><input type="checkbox" name="Activités" value="Visites"><span>Visites</span></label>
 <label><input type="checkbox" name="Activités" value="Sport"><span>Sport</span></label>
+<label><input type="checkbox" id="actAutre" value="Autre"><span>Autre…</span></label>
 </div>
+<input type="text" id="actAutreTxt" name="Autre activité" placeholder="Laquelle ? (jet-ski, plongée, karaoké…)" style="display:none;margin-top:10px">
 <label class="q">Les repas</label>
 <div class="cards">
 <label><input type="radio" name="Repas" value="Cuisine maison"><span>Cuisine maison</span></label>
@@ -161,16 +188,20 @@ footer{text-align:center;font:300 10px Montserrat;letter-spacing:.3em;text-trans
 </section>
 
 <section class="step" data-req="Budget">
-<div class="kicker">04 · Les détails qui comptent</div>
-<h2>Trois jours de liberté, à ton image.</h2>
-<p class="lead">Seul Pierre-Alexandre voit ta réponse. Sois honnête, le séjour doit convenir à tous.</p>
-<label class="q">Budget total par personne</label>
-<div class="cards">
-<label><input type="radio" name="Budget" value="Moins de 150 €"><span><b>&lt; 150 €</b></span></label>
-<label><input type="radio" name="Budget" value="150–300 €"><span><b>150 – 300 €</b></span></label>
-<label><input type="radio" name="Budget" value="300–500 €"><span><b>300 – 500 €</b></span></label>
-<label><input type="radio" name="Budget" value="Plus de 500 €"><span><b>&gt; 500 €</b></span></label>
+<svg class="deco" viewBox="0 0 120 120"><path d="M30 34h60l-24 30v30" stroke="#12304A" stroke-width="3" fill="none" stroke-linejoin="round"/><path d="M36 38h48L60 62z" fill="#D97950"/><path d="M50 94h32" stroke="#12304A" stroke-width="3" stroke-linecap="round"/><circle cx="84" cy="30" r="9" fill="#E9C99A"/><path d="M78 18l12 20" stroke="#2F8E9C" stroke-width="3" stroke-linecap="round"/></svg><div class="kicker">04 · Le budget</div>
+<h2>Trois jours de liberté, payés en douceur.</h2>
+<p class="lead">On ne paie pas tout d'un coup : le séjour se finance chaque mois, à partir de novembre 2026.</p>
+<div class="note">
+<b>Comment ça marche</b>
+<ul>
+<li>Le montant total est divisé par le nombre de mois entre <b>novembre 2026</b> et le mois qui précède le départ.</li>
+<li>Une mensualité est réclamée chaque mois. Le total doit être réuni <b>un mois avant le départ</b>.</li>
+<li>Départ en mai : 6 mensualités (nov. → avril). En septembre : 10. En octobre : 11. Plus on part tard, plus on a le temps d'économiser… ou de viser plus beau.</li>
+</ul>
 </div>
+<label class="q" for="budget">Budget total par personne, tout compris</label>
+<div class="eur"><input type="number" id="budget" name="Budget" min="0" step="10" inputmode="numeric" placeholder="Ton montant"><span>€</span></div>
+<div class="sim" id="sim"></div>
 <label class="q">Ce budget couvre…</label>
 <div class="cards">
 <label><input type="checkbox" name="Budget inclut" value="Hébergement"><span>Hébergement</span></label>
@@ -181,7 +212,7 @@ footer{text-align:center;font:300 10px Montserrat;letter-spacing:.3em;text-trans
 </section>
 
 <section class="step">
-<div class="kicker">05 · Le voyage</div>
+<svg class="deco" viewBox="0 0 120 120"><path d="M60 16v60" stroke="#12304A" stroke-width="3"/><path d="M62 20q28 24 0 52z" fill="#F8F5EE" stroke="#2F8E9C" stroke-width="3"/><path d="M58 30q-22 20 0 42z" fill="#E9C99A"/><path d="M26 80h70l-10 14H36z" fill="#12304A"/><path d="M8 104q12-8 24 0t24 0 24 0 24 0" fill="none" stroke="#2F8E9C" stroke-width="4" stroke-linecap="round"/></svg><div class="kicker">05 · Le voyage</div>
 <h2>Comment rejoins-tu la crique ?</h2>
 <p class="lead">On organise les trajets et les covoiturages ensemble.</p>
 <label class="q" for="depart">Tu pars d'où ?</label>
@@ -205,7 +236,7 @@ footer{text-align:center;font:300 10px Montserrat;letter-spacing:.3em;text-trans
 </section>
 
 <section class="step">
-<div class="kicker">06 · La maison</div>
+<svg class="deco" viewBox="0 0 120 120"><path d="M20 60l40-30 40 30" fill="none" stroke="#D97950" stroke-width="4" stroke-linejoin="round"/><rect x="28" y="58" width="64" height="40" fill="#fff" stroke="#12304A" stroke-width="3"/><rect x="52" y="74" width="16" height="24" fill="#2F8E9C"/><rect x="34" y="66" width="12" height="10" fill="#E9C99A"/><rect x="74" y="66" width="12" height="10" fill="#E9C99A"/><path d="M8 106h104" stroke="#2F8E9C" stroke-width="5" stroke-linecap="round"/></svg><div class="kicker">06 · La maison</div>
 <h2>Ta chambre avec vue.</h2>
 <p class="lead">Pour trouver la villa qui nous ressemble.</p>
 <label class="q">Partage de chambre</label>
@@ -230,23 +261,20 @@ footer{text-align:center;font:300 10px Montserrat;letter-spacing:.3em;text-trans
 </section>
 
 <section class="step" data-req="Engagement">
-<div class="kicker">07 · Embarquement</div>
+<svg class="deco" viewBox="0 0 120 120"><g fill="#12304A"><path d="M18 50q0-8 10-8h20q8 0 8 8v6q0 12-14 12h-10q-14 0-14-12z"/><path d="M64 50q0-8 8-8h20q10 0 10 8v6q0 12-14 12H78q-14 0-14-12z"/></g><path d="M56 48q4-4 8 0" stroke="#12304A" stroke-width="4" fill="none"/><path d="M26 50h18M72 50h18" stroke="#2F8E9C" stroke-width="3" stroke-linecap="round"/><path d="M20 92l14-14 10 10 14-18 18 22" fill="none" stroke="#E9C99A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="92" cy="86" r="8" fill="#D97950"/></svg><div class="kicker">07 · Embarquement</div>
 <h2>On réserve ta place ?</h2>
-<p class="lead">À 11, la villa se réserve avec un acompte. Chacun verse sa part une fois la destination choisie.</p>
+<p class="lead">Le financement démarre en novembre 2026 : une mensualité par mois, le total réuni un mois avant le départ.</p>
 <div class="cards one">
-<label><input type="radio" name="Engagement" value="Oui, je suis dedans"><span><b>Oui, je suis dedans</b><em>Je verse l'acompte dès la destination validée</em></span></label>
+<label><input type="radio" name="Engagement" value="Oui, je suis dedans"><span><b>Oui, je suis dedans</b><em>Je verse ma mensualité dès novembre 2026</em></span></label>
 <label><input type="radio" name="Engagement" value="Je dois confirmer"><span>Je dois encore confirmer</span></label>
 </div>
-<label class="q">Paiement</label>
-<div class="cards">
-<label><input type="radio" name="Paiement" value="Cagnotte commune"><span>Cagnotte commune</span></label>
-<label><input type="radio" name="Paiement" value="Avance + Tricount"><span>Avance + Tricount</span></label>
-</div>
+
 <label class="q" for="com">Un mot, une idée de destination ?</label>
 <textarea id="com" name="Commentaire"></textarea>
 </section>
 
 <section class="step" id="final">
+<svg class="deco" viewBox="0 0 120 120"><path d="M14 70l92-36-30 52-14-18z" fill="#fff" stroke="#12304A" stroke-width="3" stroke-linejoin="round"/><path d="M62 68l44-34" stroke="#12304A" stroke-width="3"/><path d="M10 100q16-10 32 0" stroke="#E9C99A" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
 <div class="kicker">Embarquement confirmé</div>
 <h2>Ta place dans l'aventure se dessine.</h2>
 <p class="lead">Envoie ton pass à Pierre-Alexandre. Le meilleur reste à venir.</p>
@@ -255,7 +283,7 @@ footer{text-align:center;font:300 10px Montserrat;letter-spacing:.3em;text-trans
 <div class="bd">
 <div><small>Passager</small><strong id="pName">—</strong></div>
 <div><small>Siège</small><strong id="pSeat">—</strong></div>
-<div><small>Départ</small><strong>Mai 2027</strong></div>
+<div><small>Départ</small><strong id="pDate">2027</strong></div>
 <div><small>Destination</small><strong>À révéler</strong></div>
 </div>
 <div class="ft">11 amigos. 3 días. Una aventura.</div>
@@ -265,6 +293,7 @@ footer{text-align:center;font:300 10px Montserrat;letter-spacing:.3em;text-trans
 <footer>PAG Aventura · Édition 2027</footer>
 </section>
 
+<svg class="waves" viewBox="0 0 400 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40q50-20 100 0t100 0 100 0 100 0V90H0z" fill="#E3F1F2"/><path d="M0 60q50-16 100 0t100 0 100 0 100 0V90H0z" fill="#d3e9eb"/></svg>
 <div class="dock" id="dock">
 <button type="button" class="btn ghost back" id="back" aria-label="Retour">←</button>
 <button type="button" class="btn next" id="next">Continuer</button>
@@ -283,11 +312,12 @@ function show(n){
   count.textContent=n<last?String(n+1).padStart(2,'0')+' / '+String(last).padStart(2,'0'):'';
   dock.style.display=n===last?'none':'flex';
   nextB.textContent=n===last-1?'Valider':'Continuer';
-  if(n===last){const nm=(flow.Nom.value.trim().split(/\s+/)[0]||'—');document.getElementById('pName').textContent=nm;document.getElementById('pSeat').textContent=String(1+(nm.length*7+nm.charCodeAt(0))%11).padStart(2,'0')+'A'}
+  if(n===3)sim();
+  if(n===last){const ds=Object.keys(plans());document.getElementById('pDate').textContent=ds.length===1?ds[0]:'2027';const nm=(flow.Nom.value.trim().split(/\s+/)[0]||'—');document.getElementById('pName').textContent=nm;document.getElementById('pSeat').textContent=String(1+(nm.length*7+nm.charCodeAt(0))%11).padStart(2,'0')+'A'}
   scrollTo({top:0,behavior:'smooth'});
 }
 function filled(name){const els=flow.querySelectorAll('[name="'+name+'"]');return [...els].some(e=>(e.type==='radio'||e.type==='checkbox')?e.checked:e.value.trim())}
-const labels={Nom:'Indique ton prénom pour qu\'on sache qui embarque.',Dates:'Choisis au moins une option.',Ambiance:'Choisis au moins une ambiance.',Budget:'Choisis une fourchette de budget.',Engagement:'Dis-nous si tu es partant(e).'};
+const labels={Nom:'Indique ton prénom pour qu\'on sache qui embarque.',Dates:'Choisis au moins une option.',Ambiance:'Choisis au moins une ambiance.',Budget:'Indique ton budget total en euros.',Engagement:'Dis-nous si tu es partant(e).'};
 nextB.onclick=()=>{
   const req=steps[i].dataset.req;
   let e=steps[i].querySelector('.err');if(!e){e=document.createElement('p');e.className='err';steps[i].appendChild(e)}
@@ -295,11 +325,19 @@ nextB.onclick=()=>{
   e.textContent='';show(i+1);
 };
 document.getElementById('back').onclick=()=>{if(i===0){flow.classList.remove('on');document.getElementById('hero').style.display='flex'}else show(i-1)};
+const acB=document.getElementById('actAutre'),acT=document.getElementById('actAutreTxt');
+acB.onchange=()=>{acT.style.display=acB.checked?'block':'none';if(acB.checked)acT.focus()};
+function plans(){const m={};flow.querySelectorAll('[name="Dates"]:checked').forEach(e=>{if(e.dataset.m)m[e.dataset.d]=+e.dataset.m});return m}
+function sim(){const v=+document.getElementById('budget').value,el=document.getElementById('sim');const p=plans();el.innerHTML='';
+ if(!v)return;const ks=Object.keys(p);if(!ks.length){el.innerHTML='<div><span>Choisis des dates à l\'étape 2 pour voir tes mensualités.</span></div>';return}
+ ks.forEach(k=>{const d=document.createElement('div');d.innerHTML='<span>Départ '+k+' · '+p[k]+' mois</span><b>'+Math.ceil(v/p[k])+' €/mois</b>';el.appendChild(d)})}
+document.getElementById('budget').oninput=sim;
 function summary(){
   const fd=new FormData(flow),out={};
   for(const [k,v] of fd.entries()){if(String(v).trim()==='')continue;(out[k]=out[k]||[]).push(v)}
   let t='🌴 PAG Aventura · Guest Pass\n';
-  for(const k in out)t+=`\n• ${k} : ${out[k].join(', ')}`;
+  for(const k in out)t+=`\n• ${k} : ${out[k].join(', ')}${k==='Budget'?' €':''}`;
+  const v=+document.getElementById('budget').value,p=plans();if(v)for(const k in p)t+=`\n• Mensualité si départ ${k} : ${Math.ceil(v/p[k])} € × ${p[k]} mois (dès nov. 2026)`;
   return t;
 }
 document.getElementById('wa').onclick=()=>{
