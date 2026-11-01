@@ -1,103 +1,178 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body>
-<title>PAG Aventura · Questionnaire</title>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PAG Aventura · Mai 2027</title>
+<meta property="og:title" content="PAG Aventura · Mai 2027">
+<meta property="og:description" content="11 amis. 3 jours. L'aventure commence ici.">
+<meta property="og:image" content="https://pag-star.github.io/PAG_AVENTURA/hero-mobile.jpg">
+<meta name="theme-color" content="#12304A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#12304A;--teal:#2F8E9C;--sand:#E9C99A;--ivory:#F8F5EE;--coral:#D97950;--ink:#12304A;--muted:#4f6577;--card:#fff;--line:#e4dccd;--bg:var(--ivory);--field:#fff}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#F3EEE4;--muted:#b7c2cc;--card:#17344d;--line:#2a4a66;--bg:#0d2336;--field:#0f2a40}}
-:root[data-theme="dark"]{--ink:#F3EEE4;--muted:#b7c2cc;--card:#17344d;--line:#2a4a66;--bg:#0d2336;--field:#0f2a40}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.55 Montserrat,system-ui,sans-serif}
-.hero{position:relative;color:#fff;background:var(--navy);overflow:hidden}
-.hero svg{display:block;width:100%;height:auto}
-.hero .txt{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 24px;max-width:760px;margin:0 auto}
+:root{--navy:#12304A;--teal:#2F8E9C;--teal-pale:#E3F1F2;--sand:#E9C99A;--ivory:#F8F5EE;--coral:#D97950;--muted:#4F6577}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--ivory);color:var(--navy);font:400 16px/1.6 Montserrat,system-ui,sans-serif}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+/* HERO */
+.hero{position:relative;height:100svh;min-height:560px;color:#fff;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:max(24px,env(safe-area-inset-top)) 24px max(32px,env(safe-area-inset-bottom))}
+.hero picture,.hero picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:42% center}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,48,74,.15) 0%,rgba(18,48,74,.25) 45%,rgba(18,48,74,.8) 100%)}
+.hero>*:not(picture){position:relative;z-index:1}
+.hero .logo{width:132px;margin:0 auto;opacity:0;animation:fade .8s .1s forwards}
+.hero .bottom{max-width:640px;margin:0 auto;width:100%;text-align:center}
 .kicker{font:300 11px Montserrat;letter-spacing:.32em;text-transform:uppercase;color:var(--sand)}
-h1{font:600 clamp(40px,8vw,76px)/1 "Cormorant Garamond",serif;margin:.15em 0 .1em}
-.tag{font:italic 500 clamp(17px,3vw,24px) "Cormorant Garamond",serif;opacity:.95}
-main{max-width:720px;margin:0 auto;padding:28px 16px 64px}
-.intro{font-size:15px;color:var(--muted);margin-bottom:24px}
-section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;margin-bottom:16px}
-h2{font:600 26px/1.1 "Cormorant Garamond",serif;margin:0 0 4px;display:flex;gap:10px;align-items:baseline}
-h2 span{font:500 11px Montserrat;letter-spacing:.2em;color:var(--teal)}
-.hint{font-size:13px;color:var(--muted);margin:0 0 14px}
-label.q{display:block;font-weight:600;font-size:14px;margin:16px 0 8px}
-.opts{display:flex;flex-wrap:wrap;gap:8px}
-.opts label{cursor:pointer}
-.opts input{position:absolute;opacity:0;pointer-events:none}
-.opts span{display:inline-block;padding:9px 14px;border:1px solid var(--line);border-radius:999px;font-size:13.5px;background:var(--field);transition:.15s}
-.opts input:checked+span{background:var(--teal);border-color:var(--teal);color:#fff}
-.opts input:focus-visible+span{outline:2px solid var(--coral);outline-offset:2px}
-input[type=text],input[type=number],textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);font:inherit}
-textarea{min-height:76px;resize:vertical}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:520px){.row{grid-template-columns:1fr}}
-.range{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted)}
-.range input{flex:1;accent-color:var(--teal)}
-.key{border-left:0;background:linear-gradient(0deg,rgba(217,121,80,.08),rgba(217,121,80,.08)),var(--card)}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-button{font:600 14px Montserrat;border:0;border-radius:999px;padding:14px 22px;cursor:pointer}
-.primary{background:var(--coral);color:#fff}
-.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.msg{font-size:13px;color:var(--teal);min-height:20px;margin-top:10px}
-footer{text-align:center;font:300 11px Montserrat;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);padding:10px 0 40px}
+h1{font:600 48px/1 "Cormorant Garamond",serif;margin:12px 0 12px;opacity:0;animation:rise .8s .45s forwards}
+.hero p{margin:0 auto 28px;max-width:420px;font-size:15px;opacity:0;animation:rise .8s .7s forwards}
+@media(min-width:768px){h1{font-size:76px}.hero .logo{width:168px}}
+@keyframes fade{to{opacity:1}}@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 32px;border-radius:28px;border:0;background:var(--teal);color:#fff;font:600 13px Montserrat;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;text-decoration:none;width:100%;max-width:360px}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.coral{background:var(--coral)}
+.btn.ghost{background:transparent;color:var(--navy);border:1px solid var(--sand)}
+.hero .btn{opacity:0;animation:rise .8s .95s forwards}
+/* FLOW */
+#flow{display:none;min-height:100svh;flex-direction:column}
+#flow.on{display:flex}
+.top{position:sticky;top:0;z-index:5;background:var(--ivory);padding:max(14px,env(safe-area-inset-top)) 20px 10px;display:flex;align-items:center;gap:14px}
+.top img{width:44px}
+.bar{flex:1;height:3px;background:#e9e1d2;border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sand),var(--teal));transition:width .5s}
+.count{font:500 11px Montserrat;letter-spacing:.14em;color:var(--muted)}
+.step{display:none;flex:1;max-width:640px;margin:0 auto;width:100%;padding:18px 20px 140px;animation:rise .5s}
+.step.on{display:block}
+.step .kicker{color:var(--teal)}
+h2{font:600 36px/1.05 "Cormorant Garamond",serif;margin:8px 0 10px}
+.lead{font:italic 500 20px/1.35 "Cormorant Garamond",serif;color:var(--muted);margin:0 0 22px}
+.q{display:block;font-weight:600;font-size:14px;margin:24px 0 10px}
+.q small{font-weight:400;color:var(--muted)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cards.one{grid-template-columns:1fr}
+.cards label{cursor:pointer;display:block}
+.cards input{position:absolute;opacity:0;pointer-events:none}
+.cards span{display:flex;flex-direction:column;justify-content:center;min-height:60px;padding:12px 14px;border:1px solid var(--sand);border-radius:16px;background:#fff;font-size:14px;font-weight:500;transition:.15s;line-height:1.3}
+.cards span em{font-style:normal;font-weight:400;font-size:12px;color:var(--muted);margin-top:2px}
+.cards span b{font:600 22px/1.1 "Cormorant Garamond",serif}
+.cards.big span{min-height:96px}
+.cards input:checked+span{background:var(--teal-pale);border:2px solid var(--teal);padding:11px 13px}
+.cards input:focus-visible+span{outline:2px solid var(--coral);outline-offset:2px}
+input[type=text],input[type=number],textarea{width:100%;height:54px;padding:0 16px;border:1px solid var(--sand);border-radius:16px;background:#fff;color:var(--navy);font:inherit;font-size:16px}
+textarea{height:96px;padding:14px 16px;resize:vertical}
+input:focus,textarea:focus{outline:2px solid var(--teal);border-color:transparent}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:6;padding:14px 20px max(18px,env(safe-area-inset-bottom));background:linear-gradient(0deg,var(--ivory) 70%,rgba(248,245,238,0));display:flex;gap:10px;justify-content:center}
+.dock .back{width:56px;min-width:56px;padding:0;max-width:56px}
+.dock .next{max-width:300px}
+.err{color:var(--coral);font-size:13px;min-height:20px;margin-top:8px}
+/* PASS */
+.pass{margin:8px 0 24px;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 18px 40px -18px rgba(18,48,74,.45)}
+.pass .ph{position:relative;height:150px;background:url(hero-mobile.jpg) 42% 30%/cover}
+.pass .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,48,74,.1),rgba(18,48,74,.75))}
+.pass .ph img{position:absolute;z-index:1;left:18px;bottom:14px;width:96px}
+.pass .ph .k{position:absolute;z-index:1;right:18px;bottom:18px;color:var(--sand);font:300 10px Montserrat;letter-spacing:.3em}
+.pass .bd{display:grid;grid-template-columns:1fr 1fr;gap:14px 10px;padding:18px;border-bottom:2px dashed #eadfcb}
+.pass .bd div small{display:block;font:500 10px Montserrat;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+.pass .bd div strong{font:600 22px/1.15 "Cormorant Garamond",serif}
+.pass .ft{padding:14px 18px;font:italic 500 18px "Cormorant Garamond",serif;text-align:center;color:var(--teal)}
+footer{text-align:center;font:300 10px Montserrat;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);padding:6px 0 0}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;opacity:1!important}}
 </style>
+</head>
+<body>
 
-<div class="hero">
-<svg viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-<defs>
-<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12304A"/><stop offset=".55" stop-color="#2F6F86"/><stop offset="1" stop-color="#E9C99A"/></linearGradient>
-<linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2F8E9C"/><stop offset="1" stop-color="#12304A"/></linearGradient>
-</defs>
-<rect width="1200" height="520" fill="url(#sky)"/>
-<circle cx="880" cy="350" r="90" fill="#E9C99A"/><circle cx="880" cy="350" r="140" fill="#E9C99A" opacity=".18"/>
-<rect y="355" width="1200" height="165" fill="url(#sea)"/>
-<path d="M0 395 Q150 380 300 395 T600 395 T900 395 T1200 395" stroke="#E9C99A" stroke-opacity=".35" fill="none" stroke-width="2"/>
-<path d="M0 440 Q150 425 300 440 T600 440 T900 440 T1200 440" stroke="#F8F5EE" stroke-opacity=".2" fill="none" stroke-width="2"/>
-<path d="M1080 520 C1070 430 1060 330 1095 230" stroke="#0b1f30" stroke-width="12" fill="none" stroke-linecap="round"/>
-<g fill="#0b1f30"><path d="M1095 230 C1040 200 990 215 955 250 C1010 230 1050 232 1095 230Z"/><path d="M1095 230 C1150 195 1200 205 1230 240 C1180 225 1140 228 1095 230Z"/><path d="M1095 230 C1070 175 1030 160 990 170 C1040 185 1070 205 1095 230Z"/><path d="M1095 230 C1120 170 1160 155 1200 165 C1150 185 1120 205 1095 230Z"/><path d="M1095 230 C1095 180 1085 145 1065 125 C1090 165 1095 195 1095 230Z"/></g>
-</svg>
-<div class="txt"><div class="kicker">Summer edition · Mai 2027</div><h1>PAG Aventura</h1><div class="tag">11 amigos. 3 días. Una aventura.</div></div>
+<header class="hero" id="hero">
+<picture><source media="(max-width:900px)" srcset="hero-mobile.jpg"><img src="hero.jpg" alt="Un groupe d'amis trinque au coucher du soleil sur un ponton, au bord d'une crique turquoise"></picture>
+<img class="logo" src="logo-white.png" alt="PAG Aventura">
+<div class="bottom">
+<div class="kicker">Édition privée · Mai 2027</div>
+<h1>L'aventure commence ici.</h1>
+<p>11 amis. 3 jours. Du soleil, la mer et des souvenirs inoubliables.</p>
+<button class="btn coral" id="start">Je rejoins l'aventure</button>
 </div>
+</header>
 
-<main>
-<p class="intro">Quelques minutes pour organiser le meilleur week-end de l'année. Tes réponses arrivent directement à Pierre-Alexandre, qui prépare 2 ou 3 destinations à partir de ce que vous aurez tous répondu.</p>
+<form id="flow" novalidate>
+<div class="top"><img src="logo-transparent.png" alt=""><div class="bar"><i id="bar"></i></div><span class="count" id="count"></span></div>
 
-<form id="f">
-<section>
-<h2><span>01</span>Toi</h2>
-<label class="q" for="nom">Prénom et nom</label>
-<input type="text" id="nom" name="Nom" required>
+<section class="step" data-req="Nom">
+<div class="kicker">01 · Bienvenue à bord</div>
+<h2>Une escapade imaginée pour nous.</h2>
+<p class="lead">À vous de choisir ce qui la rendra inoubliable. Trois minutes, pas plus.</p>
+<label class="q" for="nom">Ton prénom et ton nom</label>
+<input type="text" id="nom" name="Nom" autocomplete="name" placeholder="Prénom Nom">
+<label class="q">Tu viens…</label>
+<div class="cards">
+<label><input type="radio" name="Vient" value="Seul(e)"><span>Seul(e)</span></label>
+<label><input type="radio" name="Vient" value="En couple"><span>En couple</span></label>
+<label><input type="radio" name="Vient" value="Avec enfant(s)"><span>Avec enfant(s)</span></label>
+</div>
 </section>
 
-<section>
-<h2><span>02</span>Dates</h2>
-<p class="hint">Les deux week-ends prolongés de mai 2027.</p>
-<label class="q">Quelles dates te conviennent ?</label>
-<div class="opts">
-<label><input type="checkbox" name="Dates" value="Ascension (jeu. 6 → dim. 9 mai)"><span>Ascension · 6 → 9 mai</span></label>
-<label><input type="checkbox" name="Dates" value="Pentecôte (sam. 15 → lun. 17 mai)"><span>Pentecôte · 15 → 17 mai</span></label>
-<label><input type="checkbox" name="Dates" value="Aucune"><span>Aucune des deux</span></label>
+<section class="step" data-req="Dates">
+<div class="kicker">02 · Le moment</div>
+<h2>Quand partons-nous ?</h2>
+<p class="lead">Deux week-ends prolongés en mai 2027. Coche tout ce qui te va.</p>
+<div class="cards one">
+<label><input type="checkbox" name="Dates" value="Ascension (jeu. 6 → dim. 9 mai)"><span><b>Ascension</b><em>Jeudi 6 → dimanche 9 mai</em></span></label>
+<label><input type="checkbox" name="Dates" value="Pentecôte (sam. 15 → lun. 17 mai)"><span><b>Pentecôte</b><em>Samedi 15 → lundi 17 mai</em></span></label>
+<label><input type="checkbox" name="Dates" value="Aucune des deux"><span>Aucune des deux ne me va</span></label>
 </div>
 <label class="q">Tu peux poser un jour de congé si besoin ?</label>
-<div class="opts">
+<div class="cards">
 <label><input type="radio" name="Congé" value="Oui"><span>Oui</span></label>
 <label><input type="radio" name="Congé" value="Peut-être"><span>Peut-être</span></label>
 <label><input type="radio" name="Congé" value="Non"><span>Non</span></label>
 </div>
 </section>
 
-<section>
-<h2><span>03</span>Budget</h2>
-<p class="hint">Seul Pierre-Alexandre voit ta réponse, sois honnête : le séjour doit convenir à tout le monde.</p>
+<section class="step" data-req="Ambiance">
+<div class="kicker">03 · Votre escapade idéale</div>
+<h2>Crique secrète, beach club ou aventure en mer ?</h2>
+<p class="lead">Dis-nous à quoi ressemblent tes trois jours rêvés.</p>
+<label class="q">Ton ambiance <small>(plusieurs choix possibles)</small></label>
+<div class="cards big">
+<label><input type="checkbox" name="Ambiance" value="Farniente"><span><b>Farniente</b><em>Transat, piscine, sieste</em></span></label>
+<label><input type="checkbox" name="Ambiance" value="Exploration"><span><b>Exploration</b><em>Criques, rando, villages</em></span></label>
+<label><input type="checkbox" name="Ambiance" value="Fiesta"><span><b>Fiesta</b><em>Apéros, beach club, soirées</em></span></label>
+<label><input type="checkbox" name="Ambiance" value="Gastronomie"><span><b>Gastronomie</b><em>Marchés, bonnes tables</em></span></label>
+</div>
+<label class="q">Le décor</label>
+<div class="cards">
+<label><input type="checkbox" name="Décor" value="Mer"><span>Mer</span></label>
+<label><input type="checkbox" name="Décor" value="Campagne"><span>Campagne</span></label>
+<label><input type="checkbox" name="Décor" value="Montagne"><span>Montagne</span></label>
+<label><input type="checkbox" name="Décor" value="Étranger"><span>Étranger</span></label>
+</div>
+<label class="q">Activités qui te tentent</label>
+<div class="cards">
+<label><input type="checkbox" name="Activités" value="Bateau / paddle"><span>Bateau, paddle</span></label>
+<label><input type="checkbox" name="Activités" value="Plage"><span>Plage</span></label>
+<label><input type="checkbox" name="Activités" value="Rando"><span>Rando</span></label>
+<label><input type="checkbox" name="Activités" value="Spa / détente"><span>Spa, détente</span></label>
+<label><input type="checkbox" name="Activités" value="Visites"><span>Visites</span></label>
+<label><input type="checkbox" name="Activités" value="Sport"><span>Sport</span></label>
+</div>
+<label class="q">Les repas</label>
+<div class="cards">
+<label><input type="radio" name="Repas" value="Cuisine maison"><span>Cuisine maison</span></label>
+<label><input type="radio" name="Repas" value="Restaurants"><span>Restaurants</span></label>
+<label><input type="radio" name="Repas" value="Un mélange"><span>Un mélange</span></label>
+</div>
+</section>
+
+<section class="step" data-req="Budget">
+<div class="kicker">04 · Les détails qui comptent</div>
+<h2>Trois jours de liberté, à ton image.</h2>
+<p class="lead">Seul Pierre-Alexandre voit ta réponse. Sois honnête, le séjour doit convenir à tous.</p>
 <label class="q">Budget total par personne</label>
-<div class="opts">
-<label><input type="radio" name="Budget" value="Moins de 150 €"><span>&lt; 150 €</span></label>
-<label><input type="radio" name="Budget" value="150–300 €"><span>150 – 300 €</span></label>
-<label><input type="radio" name="Budget" value="300–500 €"><span>300 – 500 €</span></label>
-<label><input type="radio" name="Budget" value="Plus de 500 €"><span>&gt; 500 €</span></label>
+<div class="cards">
+<label><input type="radio" name="Budget" value="Moins de 150 €"><span><b>&lt; 150 €</b></span></label>
+<label><input type="radio" name="Budget" value="150–300 €"><span><b>150 – 300 €</b></span></label>
+<label><input type="radio" name="Budget" value="300–500 €"><span><b>300 – 500 €</b></span></label>
+<label><input type="radio" name="Budget" value="Plus de 500 €"><span><b>&gt; 500 €</b></span></label>
 </div>
 <label class="q">Ce budget couvre…</label>
-<div class="opts">
+<div class="cards">
 <label><input type="checkbox" name="Budget inclut" value="Hébergement"><span>Hébergement</span></label>
 <label><input type="checkbox" name="Budget inclut" value="Transport"><span>Transport</span></label>
 <label><input type="checkbox" name="Budget inclut" value="Repas"><span>Repas</span></label>
@@ -105,147 +180,132 @@ footer{text-align:center;font:300 11px Montserrat;letter-spacing:.3em;text-trans
 </div>
 </section>
 
-<section>
-<h2><span>04</span>Destination</h2>
-<label class="q">Tes envies</label>
-<div class="opts">
-<label><input type="checkbox" name="Envies" value="Mer"><span>Mer</span></label>
-<label><input type="checkbox" name="Envies" value="Montagne"><span>Montagne</span></label>
-<label><input type="checkbox" name="Envies" value="Campagne"><span>Campagne</span></label>
-<label><input type="checkbox" name="Envies" value="Ville"><span>Ville</span></label>
-<label><input type="checkbox" name="Envies" value="Étranger"><span>Étranger</span></label>
-</div>
+<section class="step">
+<div class="kicker">05 · Le voyage</div>
+<h2>Comment rejoins-tu la crique ?</h2>
+<p class="lead">On organise les trajets et les covoiturages ensemble.</p>
+<label class="q" for="depart">Tu pars d'où ?</label>
+<input type="text" id="depart" name="Ville de départ" placeholder="Ville">
 <label class="q">Temps de trajet maximum</label>
-<div class="opts">
+<div class="cards">
 <label><input type="radio" name="Trajet max" value="2 h"><span>2 h</span></label>
 <label><input type="radio" name="Trajet max" value="4 h"><span>4 h</span></label>
 <label><input type="radio" name="Trajet max" value="6 h"><span>6 h</span></label>
 <label><input type="radio" name="Trajet max" value="Peu importe"><span>Peu importe</span></label>
 </div>
-<label class="q" for="depart">Tu pars d'où ?</label>
-<input type="text" id="depart" name="Ville de départ">
-</section>
-
-<section>
-<h2><span>05</span>Transport</h2>
-<div class="row">
-<div><label class="q">Tu as une voiture ?</label>
-<div class="opts">
-<label><input type="radio" name="Voiture" value="Oui"><span>Oui</span></label>
-<label><input type="radio" name="Voiture" value="Non"><span>Non</span></label>
-</div></div>
-<div><label class="q" for="places">Places libres</label><input type="number" id="places" name="Places libres" min="0" max="8"></div>
-</div>
 <label class="q">Tu préfères…</label>
-<div class="opts">
-<label><input type="radio" name="Transport préféré" value="Voiture / covoiturage"><span>Voiture</span></label>
-<label><input type="radio" name="Transport préféré" value="Train"><span>Train</span></label>
-<label><input type="radio" name="Transport préféré" value="Avion"><span>Avion</span></label>
-<label><input type="radio" name="Transport préféré" value="Indifférent"><span>Indifférent</span></label>
+<div class="cards">
+<label><input type="radio" name="Transport" value="Voiture"><span>Voiture</span></label>
+<label><input type="radio" name="Transport" value="Train"><span>Train</span></label>
+<label><input type="radio" name="Transport" value="Avion"><span>Avion</span></label>
+<label><input type="radio" name="Transport" value="Indifférent"><span>Indifférent</span></label>
 </div>
+<label class="q" for="places">Places libres dans ta voiture <small>(0 si pas de voiture)</small></label>
+<input type="number" id="places" name="Places libres" min="0" max="8" inputmode="numeric">
 </section>
 
-<section>
-<h2><span>06</span>Couchage</h2>
-<label class="q">Tu viens…</label>
-<div class="opts">
-<label><input type="radio" name="Vient" value="Seul(e)"><span>Seul(e)</span></label>
-<label><input type="radio" name="Vient" value="En couple"><span>En couple</span></label>
-<label><input type="radio" name="Vient" value="Avec enfant(s)"><span>Avec enfant(s)</span></label>
-</div>
+<section class="step">
+<div class="kicker">06 · La maison</div>
+<h2>Ta chambre avec vue.</h2>
+<p class="lead">Pour trouver la villa qui nous ressemble.</p>
 <label class="q">Partage de chambre</label>
-<div class="opts">
+<div class="cards one">
 <label><input type="radio" name="Chambre" value="OK pour partager"><span>OK pour partager</span></label>
-<label><input type="radio" name="Chambre" value="Chambre à soi (ou en couple)"><span>Chambre à moi / nous</span></label>
+<label><input type="radio" name="Chambre" value="Chambre à moi / nous"><span>Une chambre à moi / à nous</span></label>
 <label><input type="radio" name="Chambre" value="Peu importe"><span>Peu importe</span></label>
 </div>
 <label class="q">Indispensable sur place</label>
-<div class="opts">
+<div class="cards">
 <label><input type="checkbox" name="Équipements" value="Piscine"><span>Piscine</span></label>
-<label><input type="checkbox" name="Équipements" value="Jardin / terrasse"><span>Jardin / terrasse</span></label>
+<label><input type="checkbox" name="Équipements" value="Terrasse / jardin"><span>Terrasse, jardin</span></label>
 <label><input type="checkbox" name="Équipements" value="Barbecue"><span>Barbecue</span></label>
 <label><input type="checkbox" name="Équipements" value="Parking"><span>Parking</span></label>
 <label><input type="checkbox" name="Équipements" value="Lit bébé"><span>Lit bébé</span></label>
 <label><input type="checkbox" name="Équipements" value="Animal accepté"><span>Animal accepté</span></label>
 </div>
-</section>
-
-<section>
-<h2><span>07</span>Rythme et activités</h2>
-<label class="q" for="rythme">Ton rythme idéal</label>
-<div class="range">Farniente <input type="range" id="rythme" name="Rythme (1 farniente → 5 programme chargé)" min="1" max="5" value="3"> Programme chargé</div>
-<label class="q">Activités qui te tentent</label>
-<div class="opts">
-<label><input type="checkbox" name="Activités" value="Plage"><span>Plage</span></label>
-<label><input type="checkbox" name="Activités" value="Bateau / paddle"><span>Bateau / paddle</span></label>
-<label><input type="checkbox" name="Activités" value="Rando"><span>Rando</span></label>
-<label><input type="checkbox" name="Activités" value="Visites"><span>Visites</span></label>
-<label><input type="checkbox" name="Activités" value="Sport"><span>Sport</span></label>
-<label><input type="checkbox" name="Activités" value="Soirées"><span>Soirées</span></label>
-<label><input type="checkbox" name="Activités" value="Spa / détente"><span>Spa / détente</span></label>
-</div>
-<label class="q">Repas</label>
-<div class="opts">
-<label><input type="radio" name="Repas" value="Cuisine maison"><span>Cuisine maison</span></label>
-<label><input type="radio" name="Repas" value="Restaurants"><span>Restaurants</span></label>
-<label><input type="radio" name="Repas" value="Un mélange"><span>Un mélange</span></label>
-</div>
-</section>
-
-<section>
-<h2><span>08</span>Contraintes</h2>
 <label class="q" for="regime">Régime alimentaire, allergies</label>
 <input type="text" id="regime" name="Régime / allergies">
-<label class="q" for="mobilite">Mobilité, horaires (arrivée tardive, départ anticipé…)</label>
-<textarea id="mobilite" name="Mobilité / horaires"></textarea>
+<label class="q" for="contr">Mobilité, horaires (arrivée tardive, départ anticipé…)</label>
+<textarea id="contr" name="Contraintes"></textarea>
 </section>
 
-<section class="key">
-<h2><span>09</span>Engagement</h2>
-<p class="hint">À 11, la réservation se fait avec un acompte. Une fois la destination choisie, chacun verse sa part avant une date limite.</p>
-<label class="q">Tu es partant(e) pour verser un acompte une fois la destination validée ?</label>
-<div class="opts">
-<label><input type="radio" name="Acompte" value="Oui, je suis dedans"><span>Oui, je suis dedans</span></label>
-<label><input type="radio" name="Acompte" value="Je dois confirmer"><span>Je dois confirmer</span></label>
+<section class="step" data-req="Engagement">
+<div class="kicker">07 · Embarquement</div>
+<h2>On réserve ta place ?</h2>
+<p class="lead">À 11, la villa se réserve avec un acompte. Chacun verse sa part une fois la destination choisie.</p>
+<div class="cards one">
+<label><input type="radio" name="Engagement" value="Oui, je suis dedans"><span><b>Oui, je suis dedans</b><em>Je verse l'acompte dès la destination validée</em></span></label>
+<label><input type="radio" name="Engagement" value="Je dois confirmer"><span>Je dois encore confirmer</span></label>
 </div>
 <label class="q">Paiement</label>
-<div class="opts">
+<div class="cards">
 <label><input type="radio" name="Paiement" value="Cagnotte commune"><span>Cagnotte commune</span></label>
-<label><input type="radio" name="Paiement" value="Avance + remboursement (Lydia / Tricount)"><span>Avance + Tricount</span></label>
-<label><input type="radio" name="Paiement" value="Indifférent"><span>Indifférent</span></label>
+<label><input type="radio" name="Paiement" value="Avance + Tricount"><span>Avance + Tricount</span></label>
 </div>
 <label class="q" for="com">Un mot, une idée de destination ?</label>
 <textarea id="com" name="Commentaire"></textarea>
 </section>
 
-<div class="actions">
-<button type="submit" class="primary">Envoyer sur WhatsApp</button>
-<button type="button" class="ghost" id="copy">Copier mes réponses</button>
+<section class="step" id="final">
+<div class="kicker">Embarquement confirmé</div>
+<h2>Ta place dans l'aventure se dessine.</h2>
+<p class="lead">Envoie ton pass à Pierre-Alexandre. Le meilleur reste à venir.</p>
+<div class="pass">
+<div class="ph"><img src="logo-white.png" alt="PAG Aventura"><span class="k">GUEST PASS</span></div>
+<div class="bd">
+<div><small>Passager</small><strong id="pName">—</strong></div>
+<div><small>Siège</small><strong id="pSeat">—</strong></div>
+<div><small>Départ</small><strong>Mai 2027</strong></div>
+<div><small>Destination</small><strong>À révéler</strong></div>
 </div>
-<div class="msg" id="msg" role="status"></div>
+<div class="ft">11 amigos. 3 días. Una aventura.</div>
+</div>
+<button type="button" class="btn coral" id="wa" style="max-width:none">Envoyer sur WhatsApp</button>
+<p class="err" id="msg" role="status" style="color:var(--teal);text-align:center"></p>
+<footer>PAG Aventura · Édition 2027</footer>
+</section>
+
+<div class="dock" id="dock">
+<button type="button" class="btn ghost back" id="back" aria-label="Retour">←</button>
+<button type="button" class="btn next" id="next">Continuer</button>
+</div>
 </form>
-</main>
-<footer>PAG Aventura · Summer edition 2027</footer>
 
 <script>
 const PHONE='33625769826';
-const f=document.getElementById('f'),msg=document.getElementById('msg');
+const flow=document.getElementById('flow'),steps=[...document.querySelectorAll('.step')],bar=document.getElementById('bar'),count=document.getElementById('count'),dock=document.getElementById('dock'),nextB=document.getElementById('next');
+let i=0;
+document.getElementById('start').onclick=()=>{document.getElementById('hero').style.display='none';flow.classList.add('on');show(0)};
+function show(n){
+  i=n;steps.forEach((s,k)=>s.classList.toggle('on',k===n));
+  const last=steps.length-1;
+  bar.style.width=Math.round(n/last*100)+'%';
+  count.textContent=n<last?String(n+1).padStart(2,'0')+' / '+String(last).padStart(2,'0'):'';
+  dock.style.display=n===last?'none':'flex';
+  nextB.textContent=n===last-1?'Valider':'Continuer';
+  if(n===last){const nm=(flow.Nom.value.trim().split(/\s+/)[0]||'—');document.getElementById('pName').textContent=nm;document.getElementById('pSeat').textContent=String(1+(nm.length*7+nm.charCodeAt(0))%11).padStart(2,'0')+'A'}
+  scrollTo({top:0,behavior:'smooth'});
+}
+function filled(name){const els=flow.querySelectorAll('[name="'+name+'"]');return [...els].some(e=>(e.type==='radio'||e.type==='checkbox')?e.checked:e.value.trim())}
+const labels={Nom:'Indique ton prénom pour qu\'on sache qui embarque.',Dates:'Choisis au moins une option.',Ambiance:'Choisis au moins une ambiance.',Budget:'Choisis une fourchette de budget.',Engagement:'Dis-nous si tu es partant(e).'};
+nextB.onclick=()=>{
+  const req=steps[i].dataset.req;
+  let e=steps[i].querySelector('.err');if(!e){e=document.createElement('p');e.className='err';steps[i].appendChild(e)}
+  if(req&&!filled(req)){e.textContent=labels[req];return}
+  e.textContent='';show(i+1);
+};
+document.getElementById('back').onclick=()=>{if(i===0){flow.classList.remove('on');document.getElementById('hero').style.display='flex'}else show(i-1)};
 function summary(){
-  const fd=new FormData(f),out={};
+  const fd=new FormData(flow),out={};
   for(const [k,v] of fd.entries()){if(String(v).trim()==='')continue;(out[k]=out[k]||[]).push(v)}
-  let t='🌴 PAG Aventura · Mes réponses\n';
+  let t='🌴 PAG Aventura · Guest Pass\n';
   for(const k in out)t+=`\n• ${k} : ${out[k].join(', ')}`;
   return t;
 }
-f.addEventListener('submit',e=>{
-  e.preventDefault();
-  if(!f.Nom.value.trim()){msg.textContent='Indique ton prénom pour que Pierre-Alexandre sache qui répond.';f.Nom.focus();return}
-  window.open('https://wa.me/'+PHONE+'?text='+encodeURIComponent(summary()),'_blank','noopener');
-  msg.textContent='WhatsApp s\'ouvre avec ton message prêt : il ne reste qu\'à appuyer sur Envoyer.';
-});
-document.getElementById('copy').onclick=async()=>{
-  try{await navigator.clipboard.writeText(summary());msg.textContent='Réponses copiées. Colle-les dans un message à Pierre-Alexandre.'}
-  catch(e){msg.textContent='Copie impossible ici, utilise le bouton WhatsApp.'}
+document.getElementById('wa').onclick=()=>{
+  location.href='https://wa.me/'+PHONE+'?text='+encodeURIComponent(summary());
+  document.getElementById('msg').textContent='WhatsApp s\'ouvre avec ton pass prêt : appuie sur Envoyer.';
 };
 </script>
-</body></html>
+</body>
+</html>
